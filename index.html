@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Silent River — la corriente donde el sonido, la ceremonia, la geometría, la medicina y el silencio se acompañan sin pelear. Camilo Poltronieri / Sheni. Costa Rica.">
+  <title>Silent River</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-blue: #0a1c2e;
+      --mid-blue: #143654;
+      --soft-blue: #5b8db5;
+      --paper: #f4f1ea;
+      --paper-dim: #b8b5af;
+      --gold: #c9a96e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--paper);
+      background: var(--deep-blue);
+      overflow-x: hidden;
+    }
+
+    /* HERO ====================================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background:
+        radial-gradient(ellipse at center, rgba(91, 141, 181, 0.15) 0%, transparent 60%),
+        linear-gradient(135deg, #0a1c2e 0%, #143654 60%, #1f4970 100%);
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    /* SVG ripples */
+    .ripple-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      letter-spacing: 0.35em;
+      margin-bottom: 1.5rem;
+      color: var(--paper);
+    }
+
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--soft-blue);
+      margin-bottom: 4rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--paper-dim);
+      opacity: 0.6;
+      animation: fadeInOut 3s infinite;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    /* SECTION COMMON ============================================ */
+    section {
+      padding: 8rem 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .vision p {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      color: var(--paper);
+    }
+
+    .vision .name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--soft-blue);
+      margin: 5rem 0 2rem;
+      text-align: center;
+    }
+
+    .vision .silent-river-quote {
+      font-style: italic;
+      color: var(--soft-blue);
+      border-left: 1px solid var(--soft-blue);
+      padding-left: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    /* DIVIDER ==================================================== */
+    .divider {
+      text-align: center;
+      color: var(--soft-blue);
+      letter-spacing: 1em;
+      font-size: 0.8rem;
+      margin: 5rem 0;
+      opacity: 0.6;
+    }
+
+    /* OFRENDAS =================================================== */
+    .ofrendas h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--soft-blue);
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .ofrenda {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(91, 141, 181, 0.15);
+    }
+
+    .ofrenda:last-child { border-bottom: none; }
+
+    .ofrenda h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+      color: var(--paper);
+    }
+
+    .ofrenda p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--paper-dim);
+    }
+
+    /* CIERRE ===================================================== */
+    .cierre {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .cierre p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: var(--paper);
+      margin-bottom: 2rem;
+    }
+
+    /* CONTACTO =================================================== */
+    .contact {
+      text-align: center;
+      padding: 4rem 2rem 8rem;
+      border-top: 1px solid rgba(91, 141, 181, 0.15);
+    }
+
+    .contact h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: 0.2em;
+      color: var(--paper);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact .role {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--soft-blue);
+      margin-bottom: 3rem;
+    }
+
+    .contact-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-links a {
+      color: var(--paper);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid transparent;
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+
+    .contact-links a:hover {
+      color: var(--soft-blue);
+      border-bottom-color: var(--soft-blue);
+    }
+
+    /* FOOTER ===================================================== */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--paper-dim);
+      opacity: 0.4;
+    }
+
+    /* MOBILE TWEAKS ============================================== */
+    @media (max-width: 640px) {
+      section { padding: 5rem 1.5rem; }
+      .brand { letter-spacing: 0.25em; }
+      .tagline { letter-spacing: 0.4em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO ============================================== -->
+  <header class="hero">
+    <svg class="ripple-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="rippleGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#5b8db5" stop-opacity="0"/>
+          <stop offset="80%" stop-color="#5b8db5" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#5b8db5" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g transform="translate(550, 280)">
+        <circle r="40" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
+          <animate attributeName="r" from="20" to="280" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="60" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
+          <animate attributeName="r" from="20" to="280" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="80" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
+          <animate attributeName="r" from="20" to="280" dur="6s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" begin="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="100" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
+          <animate attributeName="r" from="20" to="280" dur="6s" begin="4.5s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" begin="4.5s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </svg>
+
+    <div class="hero-content">
+      <h1 class="brand">SILENT RIVER</h1>
+      <p class="tagline">The great movement</p>
+    </div>
+
+    <div class="scroll-hint">↓</div>
+  </header>
+
+  <!-- VISIÓN ============================================ -->
+  <section class="vision">
+    <p>Vivimos tiempos que no nos piden más información. Nos piden más presencia.</p>
+
+    <p>Hemos aprendido a reaccionar antes de sentir. A pertenecer al costo de abandonarnos a nosotros mismos, traicionándonos. A aprender quiénes deberíamos ser antes de descubrir quiénes somos.</p>
+
+    <p>Lo que es inconsciente, nos condiciona. El cuerpo dice la verdad — lo que el cuerpo no integra, la mente lo repite.</p>
+
+    <p>Esto no es una invitación a convertirse en alguien nuevo. Es una invitación a retirar lo que impide verse.</p>
+
+    <p class="name">⸺&nbsp;&nbsp;&nbsp;&nbsp;Camilo · Sheni&nbsp;&nbsp;&nbsp;&nbsp;⸺</p>
+
+    <p>Mi nombre es Camilo. En la selva amazónica me llamaron <em>Sheni</em>.</p>
+
+    <p>Mi camino se inició con un temazcal hace más de veintiséis años. Ahí se abrieron varios caminos que me llevaron a las selvas amazónicas, a los desiertos de México, a las montañas de Colombia, a semanas de total silencio Vipassana, a muchos lugares energéticos y geográficos. Conociendo a los abuelos y sus medicinas, el kambo, las danzas del sol, las búsquedas de visión, los ayunos, el servicio. Conviviendo con ellos, aprendiendo sus formas y palabras como hombre occidental conociendo las formas de los guardianes y habitantes de la madre selva.</p>
+
+    <p>Todos estos caminos apuntaban a un mismo lugar — y me di cuenta de que ese lugar siempre había sido el propio. El Buddha lo apuntó también: solo hay un camino real, el propio.</p>
+
+    <p class="silent-river-quote">Silent River es la palabra para esa corriente. Donde el sonido, la ceremonia, la geometría, la medicina y el silencio se acompañan sin pelear.</p>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- OFRENDAS ========================================= -->
+  <section class="ofrendas">
+    <h2>Lo que se ofrece son entradas a esa corriente</h2>
+
+    <div class="ofrenda">
+      <h3>Sound Journey</h3>
+      <p>Sesiones donde más de veinte instrumentos del mundo se tejen en vivo — duduk, fujaras, didgeridoo, sitar, instrumentos prehispánicos y muchos más. No es música. Es un campo. Se entra.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Cacao y Sonido</h3>
+      <p>El cacao abre el corazón antes de que el sonido lo recorra.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Temazcal</h3>
+      <p>La casa de sudar. Geometría de las siete direcciones: tres verticales, cuatro horizontales.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Kambo</h3>
+      <p>Medicina lúcida. Limpieza profunda y reconfiguración energética. Desde el linaje vivo donde nace.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Ceremonia de Medicina</h3>
+      <p>Espacio sostenido, conducción cuidada, apertura y cierre.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Geometría Sagrada</h3>
+      <p>Un elemento por vez: viento, tierra, agua, fuego. Lectura, práctica, cierre sonoro.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Geometría del Sonido</h3>
+      <p>Taller interactivo de resonancia y armonía física acústica.</p>
+    </div>
+
+    <div class="ofrenda">
+      <h3>Espejo Humeante</h3>
+      <p>Retiro de siete días atravesando las dimensiones del sonido y de la realidad. Próxima edición en diciembre, TOJI Retreat Center.</p>
+    </div>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- CIERRE =========================================== -->
+  <section class="cierre">
+    <p>Lo que se sostiene cuando se camina, se queda.</p>
+    <p>Si algo de esto te llama, hablamos.</p>
+  </section>
+
+  <!-- CONTACTO ========================================= -->
+  <section class="contact">
+    <h2>Camilo · Sheni</h2>
+    <p class="role">Silent River · Costa Rica</p>
+    <ul class="contact-links">
+      <li><a href="mailto:camilo@silentriver.earth">camilo@silentriver.earth</a></li>
+      <li><a href="https://instagram.com/silentriver.earth" target="_blank" rel="noopener">@silentriver.earth</a></li>
+      <li><a href="https://wa.me/506XXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    Silent River · The Great Movement
+  </footer>
+
+</body>
+</html>
