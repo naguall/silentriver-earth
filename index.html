@@ -1,397 +1,1012 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Silent River — la corriente donde el sonido, la ceremonia, la geometría, la medicina y el silencio se acompañan sin pelear. Camilo Poltronieri / Sheni. Costa Rica.">
-  <title>Silent River</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Silent River · por Camilo Poltronieri · Costa Rica</title>
+<meta name="description" content="Silent River — Sound journey, ceremonia y medicina ancestral. Por Camilo Poltronieri. 26 años de linaje vivo. Costa Rica. silentriver.earth" />
+<link rel="canonical" href="https://silentriver.earth" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050d1a;
+  --bg-deep:#02060d;
+  --surface:#0a1828;
+  --surface-2:#0d2236;
+  --water:#2a6890;
+  --water-soft:#1a4868;
+  --silver:#a8c8e0;
+  --silver-dim:#688aa8;
+  --gold:#b8a850;
+  --gold-deep:#8a7a30;
+  --text:#e8dcc4;
+  --text-dim:#8a98a8;
+  --line:#1a3245;
+  --line-soft:#102030;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;letter-spacing:.005em}
+h1{font-size:clamp(3rem,8vw,6.5rem)}
+h2{font-size:clamp(2.2rem,5vw,4rem);margin-bottom:1.5rem;font-weight:400}
+h3{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.8rem;font-weight:400}
+h4{font-size:1.4rem;margin-bottom:.5rem;font-weight:400}
+p{margin-bottom:1rem;color:var(--text-dim)}
+a{color:var(--silver);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.7}
+img{max-width:100%;display:block}
+em{font-style:italic;color:var(--silver);font-family:'Cormorant Garamond',serif;font-size:1.05em}
 
-    :root {
-      --deep-blue: #0a1c2e;
-      --mid-blue: #143654;
-      --soft-blue: #5b8db5;
-      --paper: #f4f1ea;
-      --paper-dim: #b8b5af;
-      --gold: #c9a96e;
-    }
+/* NAV */
+nav.top{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 2.5rem;
+  background:linear-gradient(to bottom,rgba(5,13,26,.92),rgba(5,13,26,.6) 70%,transparent);
+  backdrop-filter:blur(12px);
+}
+nav.top.scrolled{background:rgba(5,13,26,.97);border-bottom:1px solid var(--line)}
+.brand{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--silver);font-weight:300
+}
+.brand .dot{display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;margin:0 .6rem;vertical-align:middle}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--text-dim);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.lang-toggle{display:flex;gap:.4rem;border-left:1px solid var(--line);padding-left:1.5rem;margin-left:.5rem}
+.lang-toggle button{
+  background:none;border:1px solid var(--line);color:var(--text-dim);
+  font-family:'Inter',sans-serif;font-size:.7rem;padding:.35rem .65rem;cursor:pointer;letter-spacing:.15em;
+  transition:all .25s;
+}
+.lang-toggle button.active{border-color:var(--gold);color:var(--gold)}
+.hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
 
-    html { scroll-behavior: smooth; }
+/* PAGE ROOT */
+.page{display:none;animation:fadeIn .7s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+section{padding:6rem 2.5rem;max-width:1300px;margin:0 auto}
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--paper);
-      background: var(--deep-blue);
-      overflow-x: hidden;
-    }
+/* ============================================ */
+/* HERO  (Water + Fibonacci)                    */
+/* ============================================ */
+.hero{
+  position:relative;height:100vh;min-height:680px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:0 2rem;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:url('images/sr-hero.jpg') center/cover no-repeat;
+  filter:saturate(.9) brightness(.85);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(5,13,26,.25) 0%,rgba(5,13,26,.55) 60%,var(--bg) 100%),
+    linear-gradient(180deg,rgba(5,13,26,.4) 0%,transparent 30%,transparent 70%,var(--bg) 100%);
+}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero-svg .ripple{fill:none;stroke:var(--silver);stroke-width:.8;opacity:0;animation:rippleOut 10s infinite linear}
+.hero-svg .ripple:nth-child(1){animation-delay:0s}
+.hero-svg .ripple:nth-child(2){animation-delay:1.5s}
+.hero-svg .ripple:nth-child(3){animation-delay:3s}
+.hero-svg .ripple:nth-child(4){animation-delay:4.5s}
+.hero-svg .ripple:nth-child(5){animation-delay:6s}
+.hero-svg .ripple:nth-child(6){animation-delay:7.5s}
+@keyframes rippleOut{
+  0%{r:30;opacity:0;stroke-width:1.5}
+  15%{opacity:.7}
+  100%{r:800;opacity:0;stroke-width:.2}
+}
+.hero-svg .spiral{fill:none;stroke:var(--gold);stroke-width:.8;opacity:.35}
+.hero-svg .drop-center{fill:var(--gold);opacity:.9}
+.hero-svg .center-ring{fill:none;stroke:var(--gold);stroke-width:.6;opacity:.5;animation:slowPulse 4s infinite ease-in-out}
+@keyframes slowPulse{0%,100%{opacity:.2;stroke-width:.4}50%{opacity:.7;stroke-width:.8}}
+.stars-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.star{position:absolute;width:1.5px;height:1.5px;background:var(--silver);border-radius:50%;opacity:.4;animation:twinkle 5s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:.8}}
 
-    /* HERO ====================================================== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      background:
-        radial-gradient(ellipse at center, rgba(91, 141, 181, 0.15) 0%, transparent 60%),
-        linear-gradient(135deg, #0a1c2e 0%, #143654 60%, #1f4970 100%);
-      overflow: hidden;
-      padding: 2rem;
-    }
+.hero > *{position:relative;z-index:2}
+.hero .brand-mark{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;
+  letter-spacing:.45em;color:var(--gold);text-transform:uppercase;margin-bottom:3rem;font-weight:400
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;
+  color:var(--text);margin-bottom:1.5rem;
+  text-shadow:0 6px 40px rgba(0,0,0,.6);max-width:18ch
+}
+.hero .tagline{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--silver);
+  letter-spacing:.04em;margin-bottom:.8rem;max-width:640px
+}
+.hero .subtitle{font-size:.78rem;color:var(--text-dim);letter-spacing:.35em;text-transform:uppercase;margin-bottom:3.5rem}
+.hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center}
 
-    /* SVG ripples */
-    .ripple-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.35;
-      pointer-events: none;
-    }
+.btn{
+  padding:1rem 2.2rem;border:1px solid var(--gold);
+  color:var(--text);background:transparent;text-decoration:none;
+  letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;font-weight:400;
+  cursor:pointer;transition:all .35s;display:inline-block;font-family:'Inter',sans-serif
+}
+.btn:hover{background:var(--gold);color:var(--bg-deep);opacity:1}
+.btn.solid{background:var(--gold);color:var(--bg-deep);border-color:var(--gold)}
+.btn.solid:hover{background:transparent;color:var(--gold)}
+.btn.water{border-color:var(--silver)}
+.btn.water:hover{background:var(--silver);color:var(--bg-deep)}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 900px;
-    }
+.scroll-cue{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  color:var(--text-dim);font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;
+  animation:bobble 3s infinite ease-in-out
+}
+@keyframes bobble{0%,100%{opacity:.3;transform:translateX(-50%) translateY(0)}50%{opacity:.9;transform:translateX(-50%) translateY(4px)}}
 
-    .brand {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: clamp(2.8rem, 8vw, 5.5rem);
-      letter-spacing: 0.35em;
-      margin-bottom: 1.5rem;
-      color: var(--paper);
-    }
+/* INVITACION (post-hero) */
+.invocation-wrap{
+  position:relative;padding:10rem 2rem;text-align:center;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+}
+.invocation-wrap::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:url('images/sr-water-gold.jpg') center/cover no-repeat;
+  filter:saturate(.85) brightness(.7) hue-rotate(-5deg);
+  opacity:.5
+}
+.invocation-wrap::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:radial-gradient(ellipse at center,rgba(5,13,26,.3) 0%,rgba(5,13,26,.85) 70%);
+}
+.invocation{
+  max-width:780px;margin:0 auto;text-align:center;position:relative;z-index:2
+}
+.invocation .gold-line{display:block;width:60px;height:1px;background:var(--gold);margin:0 auto 3rem;opacity:.7}
+.invocation .gold-line.bottom{margin:3rem auto 0}
+.invocation .eyebrow{color:var(--gold);letter-spacing:.4em;text-transform:uppercase;font-size:.72rem;margin-bottom:2rem;font-weight:400}
+.invocation p{
+  font-size:clamp(1.15rem,2.3vw,1.5rem);color:var(--text);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;line-height:1.55
+}
 
-    .tagline {
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      font-size: clamp(0.7rem, 1.5vw, 0.95rem);
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--soft-blue);
-      margin-bottom: 4rem;
-    }
+/* STATS STRIP */
+.stats{
+  background:var(--surface);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:5rem 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;
+  text-align:center;position:relative
+}
+.stats::before{
+  content:'';position:absolute;top:50%;left:50%;width:1px;height:60%;
+  background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+  transform:translate(-50%,-50%);opacity:.3
+}
+.stat .n{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:3.4rem;color:var(--gold);line-height:1}
+.stat .l{font-size:.72rem;color:var(--text-dim);letter-spacing:.25em;text-transform:uppercase;margin-top:.6rem;font-weight:400}
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--paper-dim);
-      opacity: 0.6;
-      animation: fadeInOut 3s infinite;
-    }
+/* GENERIC TWO-COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.two-col img{filter:saturate(.7) brightness(.9) contrast(1.05);box-shadow:0 30px 80px rgba(0,0,0,.7)}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:3rem}}
 
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.7; }
-    }
+/* LINEAGE LIST */
+.lineage-list{list-style:none;margin:2rem 0}
+.lineage-list li{
+  padding:1.1rem 0;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+}
+.lineage-list li .what{color:var(--text)}
+.lineage-list li .when{
+  color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+  white-space:nowrap;font-style:italic;font-weight:400
+}
 
-    /* SECTION COMMON ============================================ */
-    section {
-      padding: 8rem 2rem;
-      max-width: 760px;
-      margin: 0 auto;
-    }
+blockquote{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:1.7rem;color:var(--silver);
+  border-left:2px solid var(--gold);padding:1rem 0 1rem 2rem;
+  margin:3rem 0;line-height:1.5
+}
 
-    .vision p {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-      color: var(--paper);
-    }
+/* EXPERIENCES */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:3rem}
+.exp-card{
+  background:var(--surface);border:1px solid var(--line);padding:2.8rem 2rem;
+  transition:all .4s;position:relative;overflow:hidden
+}
+.exp-card::before{
+  content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;
+  border:1px solid var(--gold);border-radius:50%;opacity:.15;transition:all .4s
+}
+.exp-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.exp-card:hover::before{opacity:.35;transform:scale(1.3) rotate(45deg)}
+.exp-card.flagship{
+  border-color:var(--gold);
+  background:linear-gradient(135deg,var(--surface) 0%,var(--surface-2) 100%)
+}
+.exp-card.flagship::after{
+  content:'FLAGSHIP';position:absolute;top:-10px;left:2rem;
+  background:var(--gold);color:var(--bg-deep);font-size:.62rem;
+  letter-spacing:.3em;padding:.3rem .8rem;font-weight:500
+}
+.exp-card h3{color:var(--silver);font-style:italic;font-weight:400}
+.exp-card .price{
+  font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--gold);font-weight:300;
+  margin:1.2rem 0;padding-top:1.2rem;border-top:1px solid var(--line)
+}
+.exp-card .price small{
+  display:block;font-size:.7rem;color:var(--text-dim);letter-spacing:.18em;
+  text-transform:uppercase;font-family:'Inter',sans-serif;margin-top:.4rem;font-weight:400
+}
+.exp-card ul{list-style:none;margin:1.2rem 0}
+.exp-card ul li{padding:.35rem 0;color:var(--text-dim);font-size:.92rem;padding-left:1.4rem;position:relative}
+.exp-card ul li::before{content:'◦';position:absolute;left:0;color:var(--gold);font-size:1rem;line-height:1.4}
 
-    .vision .name {
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      font-size: 0.85rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--soft-blue);
-      margin: 5rem 0 2rem;
-      text-align: center;
-    }
+/* MODALITIES (B2B) */
+.modality-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin:3rem 0}
+.modality{background:var(--surface);border-left:3px solid var(--gold);padding:2rem 1.8rem}
+.modality h4{color:var(--silver);font-style:italic;font-weight:400}
+.package-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem}
+.package{background:var(--surface);padding:1.8rem;border:1px solid var(--line)}
+.package h4{font-family:'Inter',sans-serif;font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.package p{font-size:.92rem;margin-top:.5rem}
+.partner-row{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem;padding:2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.partner{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--text-dim);letter-spacing:.04em;font-weight:300}
 
-    .vision .silent-river-quote {
-      font-style: italic;
-      color: var(--soft-blue);
-      border-left: 1px solid var(--soft-blue);
-      padding-left: 1.5rem;
-      margin: 3rem 0;
-    }
+/* GALLERY */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:.6rem;margin-top:3rem
+}
+.gallery-grid img{
+  width:100%;height:340px;object-fit:cover;
+  cursor:pointer;transition:all .5s;
+  filter:saturate(.55) brightness(.85) contrast(1.05)
+}
+.gallery-grid img:hover{transform:scale(1.02);filter:saturate(.9) brightness(1) contrast(1.05)}
 
-    /* DIVIDER ==================================================== */
-    .divider {
-      text-align: center;
-      color: var(--soft-blue);
-      letter-spacing: 1em;
-      font-size: 0.8rem;
-      margin: 5rem 0;
-      opacity: 0.6;
-    }
+/* MUSIC */
+.music-block{background:var(--surface);padding:2.5rem;border:1px solid var(--line);margin:2rem 0}
+.music-block iframe{width:100%;border:none}
 
-    /* OFRENDAS =================================================== */
-    .ofrendas h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 0.85rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--soft-blue);
-      text-align: center;
-      margin-bottom: 4rem;
-    }
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}}
+.contact-block{background:var(--surface);padding:2.5rem;border:1px solid var(--line)}
+.contact-block .label{color:var(--gold);font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:.6rem;font-weight:400}
+.contact-block .value{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.45rem;color:var(--text);margin-bottom:1.8rem;font-weight:400}
+.contact-block .value:last-child{margin-bottom:0}
+.upcoming{
+  background:linear-gradient(135deg,var(--surface) 0%,var(--surface-2) 100%);
+  padding:2.5rem;border:1px solid var(--gold);margin-top:3rem;text-align:center;position:relative
+}
+.upcoming::before{
+  content:'';position:absolute;top:-1px;left:50%;width:60%;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);transform:translateX(-50%)
+}
+.upcoming .date{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.6rem;margin-bottom:.5rem;font-weight:300}
+.upcoming .label{letter-spacing:.35em;text-transform:uppercase;font-size:.72rem;color:var(--text-dim)}
 
-    .ofrenda {
-      margin-bottom: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(91, 141, 181, 0.15);
-    }
+/* FORM */
+form{margin-top:2rem}
+form input,form textarea{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);
+  padding:1rem 0;color:var(--text);font-family:'Inter',sans-serif;font-size:1rem;
+  margin-bottom:1.5rem;font-weight:300
+}
+form input:focus,form textarea:focus{outline:none;border-color:var(--gold)}
+form textarea{resize:vertical;min-height:120px}
+form label{display:block;color:var(--text-dim);font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.7rem;font-weight:400}
 
-    .ofrenda:last-child { border-bottom: none; }
+/* FOOTER */
+footer{
+  padding:5rem 2.5rem 3rem;text-align:center;border-top:1px solid var(--line);
+  color:var(--text-dim);font-size:.85rem;position:relative
+}
+footer::before{
+  content:'';position:absolute;top:-1px;left:50%;width:120px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);transform:translateX(-50%)
+}
+footer .brand{display:block;margin-bottom:.8rem;font-size:1.4rem;color:var(--silver)}
+footer a{margin:0 .8rem}
+footer .divider{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);opacity:.6}
 
-    .ofrenda h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 1.4rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.8rem;
-      color: var(--paper);
-    }
+/* PAGE HEADER */
+.page-header{
+  padding:11rem 2.5rem 5rem;text-align:center;border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden
+}
+.page-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(42,104,144,.12) 0%,transparent 60%);
+  z-index:0
+}
+.page-header > *{position:relative;z-index:1}
+.page-header .eyebrow{color:var(--gold);letter-spacing:.4em;text-transform:uppercase;font-size:.72rem;margin-bottom:1.5rem;font-weight:400}
+.page-header h2{margin-bottom:1rem}
+.page-header p{max-width:680px;margin:0 auto;font-size:1.1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--silver)}
+.page-header .sigil{
+  width:40px;height:40px;margin:0 auto 2rem;display:block;opacity:.6
+}
 
-    .ofrenda p {
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--paper-dim);
-    }
+/* SECTION DIVIDER */
+.section-divider{
+  text-align:center;margin:5rem auto;color:var(--gold);opacity:.5;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem
+}
+.section-divider svg{display:block;margin:0 auto;width:80px;height:20px}
 
-    /* CIERRE ===================================================== */
-    .cierre {
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-    }
+/* COSMOLOGIA DEL SONIDO (philosophical grid) */
+.cosmology{
+  background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:6rem 2.5rem;margin:0;max-width:none;position:relative;overflow:hidden
+}
+.cosmology .inner{max-width:1300px;margin:0 auto}
+.cosmology h2{text-align:center;margin-bottom:1rem}
+.cosmology .lead{
+  text-align:center;max-width:620px;margin:0 auto 4rem;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--silver)
+}
+.cosmo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.cosmo-tile{
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  background:var(--bg-deep);border:1px solid var(--line);
+  transition:all .5s;cursor:pointer
+}
+.cosmo-tile img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.85) brightness(.85);
+  transition:all .6s
+}
+.cosmo-tile:hover img{filter:saturate(1) brightness(1) contrast(1.05);transform:scale(1.03)}
+.cosmo-tile .caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:2rem 1.5rem 1.2rem;
+  background:linear-gradient(to top,rgba(5,13,26,.95) 0%,rgba(5,13,26,.5) 70%,transparent 100%);
+  z-index:2
+}
+.cosmo-tile .caption h4{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+  color:var(--gold);font-size:1.2rem;margin-bottom:.3rem;line-height:1.1
+}
+.cosmo-tile .caption p{
+  font-size:.78rem;color:var(--text-dim);letter-spacing:.05em;line-height:1.45;margin:0
+}
 
-    .cierre p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.3rem;
-      line-height: 1.8;
-      color: var(--paper);
-      margin-bottom: 2rem;
-    }
+/* PORTADA STRIP (full-bleed banner) */
+.portada-strip{
+  position:relative;width:100%;height:50vh;min-height:340px;
+  overflow:hidden;margin:0
+}
+.portada-strip::before{
+  content:'';position:absolute;inset:0;
+  background:url('images/sr-portada1.jpg') center/cover no-repeat;
+  filter:saturate(.85) brightness(.75)
+}
+.portada-strip.alt::before{background-image:url('images/sr-portada3.jpg')}
+.portada-strip::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--bg) 0%,transparent 20%,transparent 80%,var(--bg) 100%)
+}
+.portada-strip .copy{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;z-index:2
+}
+.portada-strip .copy h3{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.8rem,4vw,3rem);color:var(--silver);max-width:18ch;line-height:1.2;
+  text-shadow:0 4px 30px rgba(0,0,0,.7)
+}
 
-    /* CONTACTO =================================================== */
-    .contact {
-      text-align: center;
-      padding: 4rem 2rem 8rem;
-      border-top: 1px solid rgba(91, 141, 181, 0.15);
-    }
+/* UNIVERSO STRIP */
+.universo-strip{
+  position:relative;width:100%;height:380px;overflow:hidden;
+  background:url('images/sr-universo.jpg') center/cover no-repeat
+}
+.universo-strip::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--bg) 0%,transparent 25%,transparent 75%,var(--bg) 100%)
+}
 
-    .contact h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 1.6rem;
-      letter-spacing: 0.2em;
-      color: var(--paper);
-      margin-bottom: 0.5rem;
-    }
-
-    .contact .role {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--soft-blue);
-      margin-bottom: 3rem;
-    }
-
-    .contact-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .contact-links a {
-      color: var(--paper);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: color 0.3s ease;
-      border-bottom: 1px solid transparent;
-      display: inline-block;
-      padding-bottom: 2px;
-    }
-
-    .contact-links a:hover {
-      color: var(--soft-blue);
-      border-bottom-color: var(--soft-blue);
-    }
-
-    /* FOOTER ===================================================== */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--paper-dim);
-      opacity: 0.4;
-    }
-
-    /* MOBILE TWEAKS ============================================== */
-    @media (max-width: 640px) {
-      section { padding: 5rem 1.5rem; }
-      .brand { letter-spacing: 0.25em; }
-      .tagline { letter-spacing: 0.4em; }
-    }
-  </style>
+/* MOBILE */
+@media(max-width:760px){
+  nav.top{padding:1rem 1.2rem}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(5,13,26,.98);flex-direction:column;padding:2rem;gap:1.5rem;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .lang-toggle{border-left:none;padding-left:0;margin-left:0;justify-content:center}
+  .hamburger{display:block}
+  section{padding:4rem 1.5rem}
+  .page-header{padding:8rem 1.5rem 3rem}
+  .hero{padding:0 1.2rem}
+  .invocation{padding:5rem 1.5rem}
+}
+</style>
 </head>
 <body>
 
-  <!-- HERO ============================================== -->
-  <header class="hero">
-    <svg class="ripple-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="rippleGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#5b8db5" stop-opacity="0"/>
-          <stop offset="80%" stop-color="#5b8db5" stop-opacity="0.5"/>
-          <stop offset="100%" stop-color="#5b8db5" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <g transform="translate(550, 280)">
-        <circle r="40" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
-          <animate attributeName="r" from="20" to="280" dur="6s" repeatCount="indefinite"/>
-          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="60" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
-          <animate attributeName="r" from="20" to="280" dur="6s" begin="1.5s" repeatCount="indefinite"/>
-          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" begin="1.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="80" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
-          <animate attributeName="r" from="20" to="280" dur="6s" begin="3s" repeatCount="indefinite"/>
-          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" begin="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="100" fill="none" stroke="url(#rippleGrad)" stroke-width="1">
-          <animate attributeName="r" from="20" to="280" dur="6s" begin="4.5s" repeatCount="indefinite"/>
-          <animate attributeName="stroke-opacity" from="0.8" to="0" dur="6s" begin="4.5s" repeatCount="indefinite"/>
-        </circle>
+<nav class="top">
+  <div class="brand" data-i18n="brand">Silent <span class="dot"></span> River</div>
+  <div class="nav-links" id="navLinks">
+    <a data-page="home" class="active" data-i18n="nav.home">Inicio</a>
+    <a data-page="camilo" data-i18n="nav.camilo">Camilo</a>
+    <a data-page="experiencias" data-i18n="nav.exp">Experiencias</a>
+    <a data-page="centros" data-i18n="nav.centros">Retreat Centers</a>
+    <a data-page="musica" data-i18n="nav.music">Música & Galería</a>
+    <a data-page="contacto" data-i18n="nav.contact">Contacto</a>
+    <div class="lang-toggle">
+      <button data-lang="es" class="active">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+  <button class="hamburger" id="ham">☰</button>
+</nav>
+
+<!-- ============ HOME ============ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="stars-bg">
+      <div class="star" style="top:12%;left:18%;animation-delay:0s"></div>
+      <div class="star" style="top:8%;left:72%;animation-delay:1s"></div>
+      <div class="star" style="top:22%;left:88%;animation-delay:2s"></div>
+      <div class="star" style="top:35%;left:8%;animation-delay:.5s"></div>
+      <div class="star" style="top:85%;left:25%;animation-delay:1.5s"></div>
+      <div class="star" style="top:78%;left:80%;animation-delay:2.3s"></div>
+      <div class="star" style="top:42%;left:92%;animation-delay:.8s"></div>
+      <div class="star" style="top:65%;left:5%;animation-delay:1.8s"></div>
+    </div>
+    <svg class="hero-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+      <!-- ripples expanding (Fibonacci-spaced radii via stagger) -->
+      <circle class="ripple" cx="700" cy="450" r="30"/>
+      <circle class="ripple" cx="700" cy="450" r="30"/>
+      <circle class="ripple" cx="700" cy="450" r="30"/>
+      <circle class="ripple" cx="700" cy="450" r="30"/>
+      <circle class="ripple" cx="700" cy="450" r="30"/>
+      <circle class="ripple" cx="700" cy="450" r="30"/>
+      <!-- Fibonacci golden spiral subtle -->
+      <g transform="translate(700,450) scale(.8)" opacity=".55">
+        <path class="spiral" d="
+          M 0,0 A 13,13 0 0,1 13,13
+          A 21,21 0 0,1 -8,21
+          A 34,34 0 0,1 -34,-13
+          A 55,55 0 0,1 21,-55
+          A 89,89 0 0,1 110,8
+          A 144,144 0 0,1 -34,144
+          A 233,233 0 0,1 -267,-89
+          A 377,377 0 0,1 110,-377
+        "/>
       </g>
+      <!-- center -->
+      <circle class="center-ring" cx="700" cy="450" r="14"/>
+      <circle class="drop-center" cx="700" cy="450" r="4"/>
     </svg>
-
-    <div class="hero-content">
-      <h1 class="brand">SILENT RIVER</h1>
-      <p class="tagline">The great movement</p>
+    <div class="brand-mark" data-i18n="hero.brand-mark">silent river</div>
+    <h1 data-i18n="hero.title">Una gota cae.<br/>El río ya estaba.</h1>
+    <div class="tagline" data-i18n="hero.tag">donde la geometría del agua, del cuerpo y del cosmos es una sola</div>
+    <div class="subtitle" data-i18n="hero.sub">por Camilo Poltronieri · Costa Rica</div>
+    <div class="hero-ctas">
+      <a class="btn solid" data-page="experiencias" data-i18n="hero.cta1">Experiencias</a>
+      <a class="btn water" data-page="centros" data-i18n="hero.cta2">Para retreat centers</a>
     </div>
+    <div class="scroll-cue" data-i18n="hero.scroll">escuchar</div>
+  </div>
 
-    <div class="scroll-hint">↓</div>
-  </header>
+  <div class="invocation-wrap">
+    <div class="invocation">
+      <div class="gold-line"></div>
+      <div class="eyebrow" data-i18n="inv.eye">invocación</div>
+      <p data-i18n="inv.body">"No traemos la medicina. La medicina ya estaba — orbitando — esperando que el cuerpo se siente y la escuche. Mi trabajo es sostener el silencio para que ese río se vuelva audible."</p>
+      <div class="gold-line bottom"></div>
+    </div>
+  </div>
 
-  <!-- VISIÓN ============================================ -->
-  <section class="vision">
-    <p>Vivimos tiempos que no nos piden más información. Nos piden más presencia.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">26</div><div class="l" data-i18n="stat.temazcal">años · temazcal</div></div>
+    <div class="stat"><div class="n">10</div><div class="l" data-i18n="stat.medicina">años · medicina</div></div>
+    <div class="stat"><div class="n">8</div><div class="l" data-i18n="stat.amazon">viajes · amazonas</div></div>
+    <div class="stat"><div class="n">5</div><div class="l" data-i18n="stat.sonora">viajes · sonora</div></div>
+    <div class="stat"><div class="n">4</div><div class="l" data-i18n="stat.vision">búsquedas · visión</div></div>
+    <div class="stat"><div class="n">3</div><div class="l" data-i18n="stat.sol">danzas · sol</div></div>
+  </div>
 
-    <p>Hemos aprendido a reaccionar antes de sentir. A pertenecer al costo de abandonarnos a nosotros mismos, traicionándonos. A aprender quiénes deberíamos ser antes de descubrir quiénes somos.</p>
-
-    <p>Lo que es inconsciente, nos condiciona. El cuerpo dice la verdad — lo que el cuerpo no integra, la mente lo repite.</p>
-
-    <p>Esto no es una invitación a convertirse en alguien nuevo. Es una invitación a retirar lo que impide verse.</p>
-
-    <p class="name">⸺&nbsp;&nbsp;&nbsp;&nbsp;Camilo · Sheni&nbsp;&nbsp;&nbsp;&nbsp;⸺</p>
-
-    <p>Mi nombre es Camilo. En la selva amazónica me llamaron <em>Sheni</em>.</p>
-
-    <p>Mi camino se inició con un temazcal hace más de veintiséis años. Ahí se abrieron varios caminos que me llevaron a las selvas amazónicas, a los desiertos de México, a las montañas de Colombia, a semanas de total silencio Vipassana, a muchos lugares energéticos y geográficos. Conociendo a los abuelos y sus medicinas, el kambo, las danzas del sol, las búsquedas de visión, los ayunos, el servicio. Conviviendo con ellos, aprendiendo sus formas y palabras como hombre occidental conociendo las formas de los guardianes y habitantes de la madre selva.</p>
-
-    <p>Todos estos caminos apuntaban a un mismo lugar — y me di cuenta de que ese lugar siempre había sido el propio. El Buddha lo apuntó también: solo hay un camino real, el propio.</p>
-
-    <p class="silent-river-quote">Silent River es la palabra para esa corriente. Donde el sonido, la ceremonia, la geometría, la medicina y el silencio se acompañan sin pelear.</p>
+  <section style="text-align:center">
+    <div class="section-divider">
+      <svg viewBox="0 0 80 20"><circle cx="40" cy="10" r="3" fill="currentColor"/><circle cx="20" cy="10" r="1" fill="currentColor"/><circle cx="60" cy="10" r="1" fill="currentColor"/></svg>
+    </div>
+    <h2 data-i18n="home.next.title">Lo que ofrezco</h2>
+    <p style="max-width:540px;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--silver)" data-i18n="home.next.sub">Siete formatos. Una sola escucha.</p>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <h3 data-i18n="card.sj">Sound Journey</h3>
+        <p data-i18n="card.sj.p">World music en vivo · 20+ instrumentos · cuencos de cristal, gongs, didgeridoo, sitar, instrumentos prehispánicos, drones, voz — tejido en vivo con live looping.</p>
+      </div>
+      <div class="exp-card">
+        <h3 data-i18n="card.cer">Ceremonia de Medicina</h3>
+        <p data-i18n="card.cer.p">Contención plena con música en vivo, integración y cuidado del campo.</p>
+      </div>
+      <div class="exp-card flagship">
+        <h3 data-i18n="card.eh">Espejo Humeante / Tezcatlipoca</h3>
+        <p data-i18n="card.eh.p">Retiro insignia de 7 días en TOJI — las 4 Geometrías de Viento, Tierra, Agua y Fuego.</p>
+      </div>
+    </div>
+    <div style="margin-top:3rem"><a class="btn" data-page="experiencias" data-i18n="home.cta">Ver todas las experiencias</a></div>
   </section>
 
-  <div class="divider">· · ·</div>
-
-  <!-- OFRENDAS ========================================= -->
-  <section class="ofrendas">
-    <h2>Lo que se ofrece son entradas a esa corriente</h2>
-
-    <div class="ofrenda">
-      <h3>Sound Journey</h3>
-      <p>Sesiones donde más de veinte instrumentos del mundo se tejen en vivo — duduk, fujaras, didgeridoo, sitar, instrumentos prehispánicos y muchos más. No es música. Es un campo. Se entra.</p>
+  <div class="portada-strip">
+    <div class="copy">
+      <h3 data-i18n="strip.1">El sonido se vuelve forma · la forma se vuelve medicina.</h3>
     </div>
+  </div>
 
-    <div class="ofrenda">
-      <h3>Cacao y Sonido</h3>
-      <p>El cacao abre el corazón antes de que el sonido lo recorra.</p>
+  <div class="cosmology">
+    <div class="inner">
+      <div class="section-divider">
+        <svg viewBox="0 0 80 20"><circle cx="40" cy="10" r="3" fill="currentColor"/><circle cx="20" cy="10" r="1" fill="currentColor"/><circle cx="60" cy="10" r="1" fill="currentColor"/></svg>
+      </div>
+      <h2 data-i18n="cosmo.title">Cosmología del Sonido</h2>
+      <p class="lead" data-i18n="cosmo.lead">El sonido no es solo lo que escuchamos. Es la forma en que el universo se ordena a sí mismo — desde la resonancia Schumann de la Tierra hasta las geometrías de las frecuencias planetarias.</p>
+      <div class="cosmo-grid">
+        <div class="cosmo-tile">
+          <img src="images/sr-cymatica.jpg" alt="Cimática del agua" />
+          <div class="caption">
+            <h4 data-i18n="cosmo.1.h">Cimática</h4>
+            <p data-i18n="cosmo.1.p">El agua hecha geometría por la voz del sonido.</p>
+          </div>
+        </div>
+        <div class="cosmo-tile">
+          <img src="images/sr-mandalas.jpg" alt="Mandalas planetarios" />
+          <div class="caption">
+            <h4 data-i18n="cosmo.2.h">Frecuencias planetarias</h4>
+            <p data-i18n="cosmo.2.p">Cada planeta canta. La cimática lo dibuja.</p>
+          </div>
+        </div>
+        <div class="cosmo-tile">
+          <img src="images/sr-schumann.jpg" alt="Resonancia Schumann" />
+          <div class="caption">
+            <h4 data-i18n="cosmo.3.h">Resonancia Schumann</h4>
+            <p data-i18n="cosmo.3.p">7.83 Hz · el latido de la Tierra · la nota base del cuerpo.</p>
+          </div>
+        </div>
+        <div class="cosmo-tile">
+          <img src="images/sr-armonia.jpg" alt="Armonía geometría" />
+          <div class="caption">
+            <h4 data-i18n="cosmo.4.h">Armonía & Geometría</h4>
+            <p data-i18n="cosmo.4.p">Las notas musicales son distancias sagradas.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="ofrenda">
-      <h3>Temazcal</h3>
-      <p>La casa de sudar. Geometría de las siete direcciones: tres verticales, cuatro horizontales.</p>
-    </div>
+<!-- ============ CAMILO ============ -->
+<div class="page" id="page-camilo">
+  <div class="page-header">
+    <svg class="sigil" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width=".5" opacity=".4"/><circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width=".5" opacity=".5"/><circle cx="20" cy="20" r="6" fill="none" stroke="currentColor" stroke-width=".7"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg>
+    <div class="eyebrow" data-i18n="camilo.eyebrow">sobre</div>
+    <h2 data-i18n="camilo.title">Camilo Poltronieri</h2>
+    <p data-i18n="camilo.lead">Costa Rica · Facilitador ceremonial · Músico · Caminante de los caminos rojos.</p>
+  </div>
 
-    <div class="ofrenda">
-      <h3>Kambo</h3>
-      <p>Medicina lúcida. Limpieza profunda y reconfiguración energética. Desde el linaje vivo donde nace.</p>
-    </div>
-
-    <div class="ofrenda">
-      <h3>Ceremonia de Medicina</h3>
-      <p>Espacio sostenido, conducción cuidada, apertura y cierre.</p>
-    </div>
-
-    <div class="ofrenda">
-      <h3>Geometría Sagrada</h3>
-      <p>Un elemento por vez: viento, tierra, agua, fuego. Lectura, práctica, cierre sonoro.</p>
-    </div>
-
-    <div class="ofrenda">
-      <h3>Geometría del Sonido</h3>
-      <p>Taller interactivo de resonancia y armonía física acústica.</p>
-    </div>
-
-    <div class="ofrenda">
-      <h3>Espejo Humeante</h3>
-      <p>Retiro de siete días atravesando las dimensiones del sonido y de la realidad. Próxima edición en diciembre, TOJI Retreat Center.</p>
+  <section>
+    <div class="two-col">
+      <img src="images/sr-camilo-live.jpg" alt="Camilo en performance — Envision 2026" />
+      <div>
+        <h3 data-i18n="camilo.story.h">La historia</h3>
+        <p data-i18n="camilo.story.p1">Empecé con los temazcales hace 26 años. Hace 10, mi camino se enfocó plenamente en la medicina — no como estudiante de una escuela, sino como caminante de los lugares donde estas prácticas nacieron.</p>
+        <p data-i18n="camilo.story.p2">He hecho 8 viajes al Amazonas viviendo con las tribus donde el kambo originalmente vive, 5 viajes a comunidades del desierto de Sonora en México, 4 búsquedas de visión y 3 danzas del sol. Mi música sale del mismo lugar — de las ceremonias, no de un estudio.</p>
+        <blockquote data-i18n="camilo.quote">"Los certificados no abren los caminos. El tiempo, el respeto y la presencia con los abuelos sí."</blockquote>
+      </div>
     </div>
   </section>
 
-  <div class="divider">· · ·</div>
-
-  <!-- CIERRE =========================================== -->
-  <section class="cierre">
-    <p>Lo que se sostiene cuando se camina, se queda.</p>
-    <p>Si algo de esto te llama, hablamos.</p>
+  <section style="background:var(--surface);margin:0;max-width:none;padding:6rem 2.5rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div style="max-width:900px;margin:0 auto">
+      <h3 data-i18n="camilo.lineage.h">Linaje y formación</h3>
+      <ul class="lineage-list">
+        <li><span class="what" data-i18n="lin.1">Facilitación de temazcales</span><span class="when" data-i18n="lin.1y">26 años</span></li>
+        <li><span class="what" data-i18n="lin.2">Camino de la medicina</span><span class="when" data-i18n="lin.2y">10 años</span></li>
+        <li><span class="what" data-i18n="lin.3">Viajes al Amazonas (vida con tribus)</span><span class="when" data-i18n="lin.3y">8 viajes</span></li>
+        <li><span class="what" data-i18n="lin.4">Comunidades del desierto de Sonora</span><span class="when" data-i18n="lin.4y">5 viajes</span></li>
+        <li><span class="what" data-i18n="lin.5">Búsquedas de visión</span><span class="when" data-i18n="lin.5y">4</span></li>
+        <li><span class="what" data-i18n="lin.6">Danzas del sol</span><span class="when" data-i18n="lin.6y">3</span></li>
+        <li><span class="what" data-i18n="lin.7">Facilitación en retiros</span><span class="when" data-i18n="lin.7y">7+ años · decenas</span></li>
+        <li><span class="what" data-i18n="lin.8">Permiso directo de chamanes amazónicos para kambo</span><span class="when" data-i18n="lin.8y">linaje vivo</span></li>
+      </ul>
+    </div>
   </section>
 
-  <!-- CONTACTO ========================================= -->
-  <section class="contact">
-    <h2>Camilo · Sheni</h2>
-    <p class="role">Silent River · Costa Rica</p>
-    <ul class="contact-links">
-      <li><a href="mailto:camilo@silentriver.earth">camilo@silentriver.earth</a></li>
-      <li><a href="https://instagram.com/silentriver.earth" target="_blank" rel="noopener">@silentriver.earth</a></li>
-      <li><a href="https://wa.me/506XXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+  <div class="universo-strip"></div>
+
+  <section>
+    <h3 style="text-align:center" data-i18n="camilo.brings.h">Lo que llevo</h3>
+    <p style="text-align:center;max-width:600px;margin:0 auto 2rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--silver)" data-i18n="camilo.brings.p">Cada presentación es autosuficiente. El centro pone el espacio. Yo pongo todo lo demás.</p>
+    <ul class="lineage-list" style="max-width:780px;margin:0 auto">
+      <li><span class="what" data-i18n="brings.1">Sistema de sonido profesional</span><span class="when">·</span></li>
+      <li><span class="what" data-i18n="brings.2">Diseño de iluminación ceremonial</span><span class="when">·</span></li>
+      <li><span class="what" data-i18n="brings.3">Sintetizadores e instrumentos electrónicos</span><span class="when">·</span></li>
+      <li><span class="what" data-i18n="brings.4">20+ instrumentos del mundo</span><span class="when">·</span></li>
+      <li><span class="what" data-i18n="brings.5">Setup técnico completo y autosuficiente</span><span class="when">·</span></li>
     </ul>
   </section>
+</div>
 
-  <footer>
-    Silent River · The Great Movement
-  </footer>
+<!-- ============ EXPERIENCIAS ============ -->
+<div class="page" id="page-experiencias">
+  <div class="page-header">
+    <svg class="sigil" viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="currentColor" stroke-width=".5" opacity=".4"/><circle cx="20" cy="14" r="6" fill="none" stroke="currentColor" stroke-width=".5"/><circle cx="14.8" cy="22" r="6" fill="none" stroke="currentColor" stroke-width=".5"/><circle cx="25.2" cy="22" r="6" fill="none" stroke="currentColor" stroke-width=".5"/></svg>
+    <div class="eyebrow" data-i18n="exp.eyebrow">experiencias</div>
+    <h2 data-i18n="exp.title">Las medicinas que ofrezco</h2>
+    <p data-i18n="exp.lead">Siete formatos. Todos con linaje. Todos con presencia plena.</p>
+  </div>
+
+  <section>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <h3 data-i18n="e.sj.h">Sound Journey</h3>
+        <p data-i18n="e.sj.p">Inmersión sonora ceremonial con más de 20 instrumentos del mundo: cuencos de cristal, gongs, didgeridoo, sitar, bansuri, instrumentos prehispánicos (huehuetl, teponaztli, ocarinas, zumbadores), djembe, kalimba, drones de overtone, voz — todo tejido en vivo con live looping y luz programada. <em>No es música de fondo. Es un campo sonoro para entrar.</em></p>
+        <ul>
+          <li data-i18n="e.sj.1">90–120 minutos · live looping</li>
+          <li data-i18n="e.sj.2">Sonido, luces y producción completa incluidos</li>
+          <li data-i18n="e.sj.3">Configurable para 20 a 500+ personas</li>
+        </ul>
+        <div class="price">USD 800<small data-i18n="e.sj.note">por sesión</small></div>
+      </div>
+
+      <div class="exp-card">
+        <h3 data-i18n="e.cacao.h">Cacao Ceremony + Sound Journey</h3>
+        <p data-i18n="e.cacao.p">Apertura del corazón con cacao ceremonial seguido de un journey sonoro completo. 3 horas. Ideal como apertura o cierre de un retiro.</p>
+        <ul>
+          <li data-i18n="e.cacao.1">Cacao ceremonial + journey de 90–120 min</li>
+          <li data-i18n="e.cacao.2">Total 3 horas de contención</li>
+          <li data-i18n="e.cacao.3">Perfecto para abrir o cerrar un retiro</li>
+        </ul>
+        <div class="price">USD 800<small data-i18n="e.cacao.note">+ insumos de cacao según grupo</small></div>
+      </div>
+
+      <div class="exp-card">
+        <h3 data-i18n="e.cer.h">Ceremonia de Medicina</h3>
+        <p data-i18n="e.cer.p">Contención ceremonial plena con música en vivo y trabajo con el campo. Integración antes y después de la ceremonia.</p>
+        <ul>
+          <li data-i18n="e.cer.1">Música en vivo durante toda la ceremonia</li>
+          <li data-i18n="e.cer.2">Cuidado y sostén del espacio energético</li>
+          <li data-i18n="e.cer.3">Integración pre y post</li>
+        </ul>
+        <div class="price">USD 250<small data-i18n="e.cer.note">por persona</small></div>
+      </div>
+
+      <div class="exp-card">
+        <h3 data-i18n="e.kambo.h">Kambo</h3>
+        <p data-i18n="e.kambo.p">Trabajo con la medicina del kambo (sapo amazónico) con permiso directo de los chamanes de la Amazonía donde esta medicina vive originalmente.</p>
+        <ul>
+          <li data-i18n="e.kambo.1">Linaje vivo · no certificación comercial</li>
+          <li data-i18n="e.kambo.2">Serie de 3 sesiones recomendada</li>
+          <li data-i18n="e.kambo.3">Preparación e integración acompañada</li>
+        </ul>
+        <div class="price">USD 100<small data-i18n="e.kambo.note">por persona · por sesión</small></div>
+      </div>
+
+      <div class="exp-card">
+        <h3 data-i18n="e.tem.h">Temazcal</h3>
+        <p data-i18n="e.tem.p">26 años facilitando el camino del temazcal. Ceremonia ancestral de purificación, oración y renacimiento.</p>
+        <ul>
+          <li data-i18n="e.tem.1">Facilitación tradicional de cuatro puertas</li>
+          <li data-i18n="e.tem.2">Apertura, sostén y cierre del temazcal</li>
+          <li data-i18n="e.tem.3">Para grupos privados o abiertos</li>
+        </ul>
+        <div class="price">USD 100 / pers.<small data-i18n="e.tem.note">mínimo USD 1.000 por temazcal</small></div>
+      </div>
+
+      <div class="exp-card flagship">
+        <h3 data-i18n="e.eh.h">Espejo Humeante / Tezcatlipoca</h3>
+        <p data-i18n="e.eh.p">Retiro insignia de 7 días basado en cosmología tolteca — las 4 Geometrías de los elementos (Viento, Tierra, Agua, Fuego), trabajo somático, sonido, ceremonia, temazcal de apertura y cierre, cacao + sound journey, integración. Co-creado con TOJI Retreat Center.</p>
+        <ul>
+          <li data-i18n="e.eh.1">7 días · hospedaje + alimentación + programa</li>
+          <li data-i18n="e.eh.2">Cosmología tolteca · 4 Geometrías</li>
+          <li data-i18n="e.eh.3">Próxima edición: Diciembre 2026 · TOJI</li>
+        </ul>
+        <div class="price">USD 3.000<small data-i18n="e.eh.note">por persona · all-inclusive</small></div>
+      </div>
+
+      <div class="exp-card">
+        <h3 data-i18n="e.geo.h">Workshops de Geometría Sagrada</h3>
+        <p data-i18n="e.geo.p">Workshops independientes de 3–4 horas: una geometría (Viento, Tierra, Agua o Fuego) + práctica corporal + cierre sonoro.</p>
+        <ul>
+          <li data-i18n="e.geo.1">3–4 horas por workshop</li>
+          <li data-i18n="e.geo.2">Una geometría a la vez</li>
+          <li data-i18n="e.geo.3">Standalone o serie de 4</li>
+        </ul>
+        <div class="price">USD 500–900<small data-i18n="e.geo.note">según tamaño del grupo</small></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ RETREAT CENTERS ============ -->
+<div class="page" id="page-centros">
+  <div class="page-header">
+    <svg class="sigil" viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" fill="none" stroke="currentColor" stroke-width=".5" opacity=".4"/><polygon points="20,8 32,20 20,32 8,20" fill="none" stroke="currentColor" stroke-width=".5"/><circle cx="20" cy="20" r="3" fill="currentColor" opacity=".7"/></svg>
+    <div class="eyebrow" data-i18n="cen.eyebrow">b2b</div>
+    <h2 data-i18n="cen.title">Para retreat centers</h2>
+    <p data-i18n="cen.lead">Colaboro con centros de retiro en Costa Rica y la región como facilitador, sound healer en residencia o co-creador de retiros insignia.</p>
+  </div>
+
+  <section>
+    <h3 data-i18n="cen.how.h">Tres formas de colaborar</h3>
+    <div class="modality-grid">
+      <div class="modality">
+        <h4 data-i18n="cen.m1.h">Eventos puntuales</h4>
+        <p data-i18n="cen.m1.p">Sound journey, temazcal o ceremonia integrada al programa que ya está corriendo en el centro. Llego con todo el equipo.</p>
+      </div>
+      <div class="modality">
+        <h4 data-i18n="cen.m2.h">Series · Residencia parcial</h4>
+        <p data-i18n="cen.m2.p">Facilitación recurrente cada mes o trimestre. Construyo audiencia con el centro y genero fidelización.</p>
+      </div>
+      <div class="modality">
+        <h4 data-i18n="cen.m3.h">Co-creación de retiro insignia</h4>
+        <p data-i18n="cen.m3.p">Diseño y operación del retiro Espejo Humeante o un programa custom como producto premium del centro. Modelo de revenue share.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:5rem" data-i18n="cen.bring.h">Setup técnico completo</h3>
+    <p data-i18n="cen.bring.p">El centro solo aporta el espacio. Yo traigo todo lo demás:</p>
+    <div class="package-list">
+      <div class="package"><h4 data-i18n="pkg.1">Sonido</h4><p data-i18n="pkg.1p">Sistema profesional escalable según tamaño del grupo.</p></div>
+      <div class="package"><h4 data-i18n="pkg.2">Luces</h4><p data-i18n="pkg.2p">Diseño de iluminación ceremonial.</p></div>
+      <div class="package"><h4 data-i18n="pkg.3">Instrumentos</h4><p data-i18n="pkg.3p">Sintetizadores, controladores, 20+ instrumentos del mundo.</p></div>
+      <div class="package"><h4 data-i18n="pkg.4">Medicina</h4><p data-i18n="pkg.4p">Materiales para temazcal, kambo, ceremonia. Linaje y permiso directo.</p></div>
+    </div>
+
+    <h3 style="margin-top:5rem" data-i18n="cen.coll.h">Colaboraciones</h3>
+    <div class="partner-row">
+      <div class="partner">TOJI</div>
+      <div class="partner">Selva Armonía</div>
+      <div class="partner">Envision Festival</div>
+      <div class="partner">Resonance</div>
+      <div class="partner" style="opacity:.5" data-i18n="coll.more">…y más</div>
+    </div>
+
+    <div style="text-align:center;margin-top:4rem">
+      <p data-i18n="cen.cta.p">¿Te interesa explorar una colaboración?</p>
+      <a class="btn solid" data-page="contacto" data-i18n="cen.cta.b">Conversemos</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============ MUSICA & GALERIA ============ -->
+<div class="page" id="page-musica">
+  <div class="page-header">
+    <svg class="sigil" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width=".5" opacity=".4"/><path d="M2,20 Q20,5 38,20 Q20,35 2,20 Z" fill="none" stroke="currentColor" stroke-width=".5"/><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>
+    <div class="eyebrow" data-i18n="m.eyebrow">media</div>
+    <h2 data-i18n="m.title">Música & Galería</h2>
+    <p data-i18n="m.lead">El sonido nace del río que ya estaba corriendo. Aquí algunas piezas y momentos.</p>
+  </div>
+
+  <section>
+    <div class="music-block">
+      <h3 data-i18n="m.sc.h">SoundCloud</h3>
+      <p data-i18n="m.sc.p">Selección de tracks y registros de ceremonias.</p>
+      <iframe height="450" scrolling="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/camilo-poltronieri&color=%23b8a850&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
+    </div>
+
+    <h3 style="margin-top:5rem;text-align:center" data-i18n="m.geo.h">Geometrías del Sonido</h3>
+    <p style="text-align:center;max-width:580px;margin:0 auto 3rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--silver)" data-i18n="m.geo.lead">El sonido visto · el sonido escuchado · el sonido sentido.</p>
+    <div class="cosmo-grid">
+      <div class="cosmo-tile">
+        <img src="images/sr-cymatica.jpg" alt="" />
+        <div class="caption"><h4 data-i18n="m.g1.h">Cimática</h4><p data-i18n="m.g1.p">9 frecuencias en agua</p></div>
+      </div>
+      <div class="cosmo-tile">
+        <img src="images/sr-mandalas.jpg" alt="" />
+        <div class="caption"><h4 data-i18n="m.g2.h">Frecuencias planetarias</h4><p data-i18n="m.g2.p">Sirius, Tierra, Sol, Mercurio, Venus, Marte…</p></div>
+      </div>
+      <div class="cosmo-tile">
+        <img src="images/sr-ripple.jpg" alt="" />
+        <div class="caption"><h4 data-i18n="m.g3.h">Ondas en el río</h4><p data-i18n="m.g3.p">El patrón ya estaba ahí.</p></div>
+      </div>
+      <div class="cosmo-tile">
+        <img src="images/sr-schumann.jpg" alt="" />
+        <div class="caption"><h4 data-i18n="m.g4.h">Tierra · 7.83 Hz</h4><p data-i18n="m.g4.p">La nota base del planeta.</p></div>
+      </div>
+      <div class="cosmo-tile">
+        <img src="images/sr-water-gold.jpg" alt="" />
+        <div class="caption"><h4 data-i18n="m.g5.h">Agua vibrando</h4><p data-i18n="m.g5.p">11 Hz · oro líquido.</p></div>
+      </div>
+      <div class="cosmo-tile">
+        <img src="images/sr-armonia.jpg" alt="" />
+        <div class="caption"><h4 data-i18n="m.g6.h">Armonía geométrica</h4><p data-i18n="m.g6.p">Las notas son distancias.</p></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:5rem;text-align:center" data-i18n="m.live.h">En vivo</h3>
+    <p style="text-align:center;max-width:580px;margin:0 auto 3rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--silver)" data-i18n="m.live.lead">Momentos del río corriendo.</p>
+    <div class="gallery-grid">
+      <img src="images/g1.jpg" alt="" />
+      <img src="images/g2.jpg" alt="" />
+      <img src="images/g3.jpg" alt="" />
+      <img src="images/g4.jpg" alt="" />
+      <img src="images/g5.jpg" alt="" />
+      <img src="images/g6.jpg" alt="" />
+    </div>
+  </section>
+</div>
+
+<!-- ============ CONTACTO ============ -->
+<div class="page" id="page-contacto">
+  <div class="page-header">
+    <svg class="sigil" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width=".5" opacity=".4"/><circle cx="20" cy="20" r="10" fill="none" stroke="currentColor" stroke-width=".5"/><circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" stroke-width=".7"/><circle cx="20" cy="20" r="1.5" fill="currentColor"/></svg>
+    <div class="eyebrow" data-i18n="c.eyebrow">contacto</div>
+    <h2 data-i18n="c.title">Conversemos</h2>
+    <p data-i18n="c.lead">Para retreat centers, organizaciones, eventos y trabajo individual.</p>
+  </div>
+
+  <section>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="label" data-i18n="c.email">Email</div>
+        <div class="value"><a href="mailto:camilo@silentriver.earth">camilo@silentriver.earth</a></div>
+        <div class="label" data-i18n="c.wa">WhatsApp</div>
+        <div class="value" data-i18n="c.wa.v">+506 — agregar</div>
+        <div class="label" data-i18n="c.ig">Instagram</div>
+        <div class="value"><a href="https://instagram.com/camilopoltronieri" target="_blank">@camilopoltronieri</a></div>
+      </div>
+
+      <div class="contact-block">
+        <h4 data-i18n="c.form.h">Escribime directamente</h4>
+        <form onsubmit="event.preventDefault();alert('Formulario de demo — conectar a Formspree/Tally en producción')">
+          <label data-i18n="c.f.name">Nombre</label>
+          <input type="text" required>
+          <label data-i18n="c.f.email">Email</label>
+          <input type="email" required>
+          <label data-i18n="c.f.role">Soy…</label>
+          <input type="text" placeholder="Retreat center · particular · organizador">
+          <label data-i18n="c.f.msg">Mensaje</label>
+          <textarea required></textarea>
+          <button class="btn solid" type="submit" data-i18n="c.f.send">Enviar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="upcoming">
+      <div class="label" data-i18n="up.label">próxima fecha pública</div>
+      <div class="date" data-i18n="up.date">Diciembre 2026</div>
+      <div data-i18n="up.where">Retiro Espejo Humeante · TOJI · Costa Rica</div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="brand">Silent <span class="dot" style="display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;margin:0 .6rem;vertical-align:middle"></span> River</div>
+  <div data-i18n="foot.tag">por Camilo Poltronieri · Costa Rica · silentriver.earth</div>
+  <div style="margin-top:1rem">
+    <a href="mailto:camilo@silentriver.earth">Email</a><span class="divider">·</span>
+    <a href="https://instagram.com/camilopoltronieri" target="_blank">Instagram</a><span class="divider">·</span>
+    <a href="https://soundcloud.com/camilo-poltronieri" target="_blank">SoundCloud</a>
+  </div>
+  <div style="margin-top:1.5rem;font-size:.72rem;opacity:.5;letter-spacing:.2em">© MMXXVI</div>
+</footer>
+
+<script>
+const pages=['home','camilo','experiencias','centros','musica','contacto'];
+function go(p){
+  if(!pages.includes(p))p='home';
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===p));
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo({top:0,behavior:'instant'});
+  history.replaceState(null,'','#'+p);
+}
+document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.dataset.page)}));
+window.addEventListener('hashchange',()=>go(location.hash.replace('#','')||'home'));
+if(location.hash)go(location.hash.replace('#',''));
+window.addEventListener('scroll',()=>document.querySelector('nav.top').classList.toggle('scrolled',window.scrollY>50));
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+
+const i18n={es:{},en:{
+  'brand':'Silent <span class="dot"></span> River',
+  'nav.home':'Home','nav.camilo':'About','nav.exp':'Experiences','nav.centros':'Retreat Centers','nav.music':'Music & Gallery','nav.contact':'Contact',
+  'hero.brand-mark':'silent river',
+  'hero.title':'A drop falls.<br/>The river was already there.',
+  'hero.tag':'where the geometry of water, body and cosmos is one',
+  'hero.sub':'by Camilo Poltronieri · Costa Rica',
+  'hero.cta1':'Experiences','hero.cta2':'For retreat centers','hero.scroll':'listen',
+  'inv.eye':'invocation',
+  'inv.body':'"We don\'t bring the medicine. The medicine was already there — orbiting — waiting for the body to sit and listen. My work is to hold the silence so that this river becomes audible."',
+  'stat.temazcal':'years · temazcal','stat.medicina':'years · medicine','stat.amazon':'amazon trips','stat.sonora':'sonora trips','stat.vision':'vision quests','stat.sol':'sun dances',
+  'home.next.title':'What I offer','home.next.sub':'Seven formats. One listening.',
+  'card.sj':'Sound Journey','card.sj.p':'Live world music · 20+ instruments · crystal bowls, gongs, didgeridoo, sitar, pre-Columbian instruments, drones, voice — woven live with looping.',
+  'card.cer':'Medicine Ceremony','card.cer.p':'Full ceremonial holding with live music, integration and field care.',
+  'card.eh':'Smoking Mirror / Tezcatlipoca','card.eh.p':'Flagship 7-day retreat at TOJI — the 4 Geometries of Wind, Earth, Water and Fire.',
+  'home.cta':'See all experiences',
+  'strip.1':'Sound becomes form · form becomes medicine.',
+  'cosmo.title':'Cosmology of Sound',
+  'cosmo.lead':'Sound is not just what we hear. It is the way the universe orders itself — from the Schumann resonance of the Earth to the geometries of planetary frequencies.',
+  'cosmo.1.h':'Cymatics','cosmo.1.p':'Water made geometry by the voice of sound.',
+  'cosmo.2.h':'Planetary frequencies','cosmo.2.p':'Each planet sings. Cymatics draws it.',
+  'cosmo.3.h':'Schumann resonance','cosmo.3.p':'7.83 Hz · Earth\'s heartbeat · the body\'s base note.',
+  'cosmo.4.h':'Harmony & Geometry','cosmo.4.p':'Musical notes are sacred distances.',
+  'm.geo.h':'Geometries of Sound','m.geo.lead':'Sound seen · sound heard · sound felt.',
+  'm.g1.h':'Cymatics','m.g1.p':'9 frequencies in water',
+  'm.g2.h':'Planetary frequencies','m.g2.p':'Sirius, Earth, Sun, Mercury, Venus, Mars…',
+  'm.g3.h':'Ripples in the river','m.g3.p':'The pattern was already there.',
+  'm.g4.h':'Earth · 7.83 Hz','m.g4.p':'The base note of the planet.',
+  'm.g5.h':'Water vibrating','m.g5.p':'11 Hz · liquid gold.',
+  'm.g6.h':'Harmonic geometry','m.g6.p':'Notes are distances.',
+  'm.live.h':'Live','m.live.lead':'Moments of the river running.',
+  'camilo.eyebrow':'about','camilo.title':'Camilo Poltronieri',
+  'camilo.lead':'Costa Rica · Ceremonial facilitator · Musician · Walker of the red paths.',
+  'camilo.story.h':'The story',
+  'camilo.story.p1':'I started with temazcales 26 years ago. Ten years ago, my path focused fully on the medicine — not as a student of a school, but as a walker of the places where these practices were born.',
+  'camilo.story.p2':'I have made 8 trips to the Amazon living with the tribes where kambo originally lives, 5 trips to desert communities in Sonora Mexico, 4 vision quests and 3 sun dances. My music comes from the same place — from the ceremonies, not from a studio.',
+  'camilo.quote':'"Certificates don\'t open the paths. Time, respect, and presence with the elders do."',
+  'camilo.lineage.h':'Lineage and formation',
+  'lin.1':'Temazcal facilitation','lin.1y':'26 years',
+  'lin.2':'Medicine path','lin.2y':'10 years',
+  'lin.3':'Amazon trips (life with tribes)','lin.3y':'8 trips',
+  'lin.4':'Sonora desert communities','lin.4y':'5 trips',
+  'lin.5':'Vision quests','lin.5y':'4',
+  'lin.6':'Sun dances','lin.6y':'3',
+  'lin.7':'Facilitation at retreats','lin.7y':'7+ years · dozens',
+  'lin.8':'Direct permission from Amazonian shamans for kambo','lin.8y':'living lineage',
+  'camilo.brings.h':'What I bring','camilo.brings.p':'Each appearance is self-contained. The center provides the space. I bring everything else.',
+  'brings.1':'Professional sound system','brings.2':'Ceremonial lighting design','brings.3':'Synthesizers and electronic instruments','brings.4':'20+ world instruments','brings.5':'Complete self-contained technical setup',
+  'exp.eyebrow':'experiences','exp.title':'The medicines I offer','exp.lead':'Seven formats. All with lineage. All with full presence.',
+  'e.sj.h':'Sound Journey','e.sj.p':'Ceremonial sonic immersion with 20+ world instruments — crystal bowls, gongs, didgeridoo, sitar, bansuri, pre-Columbian instruments (huehuetl, teponaztli, ocarinas, bullroarers), djembe, kalimba, overtone drones, voice — all woven live with looping and programmed light. <em>Not background music. A field to enter.</em>',
+  'e.sj.1':'90–120 minutes · live looping','e.sj.2':'Full sound, lights and production included','e.sj.3':'Configurable for 20 to 500+ people','e.sj.note':'per session',
+  'e.cacao.h':'Cacao Ceremony + Sound Journey','e.cacao.p':'Heart opening with ceremonial cacao followed by a full sound journey. 3 hours. Ideal as opening or closing of a retreat.',
+  'e.cacao.1':'Ceremonial cacao + 90–120 min journey','e.cacao.2':'3 hours total holding','e.cacao.3':'Perfect to open or close a retreat','e.cacao.note':'+ cacao supplies per group',
+  'e.cer.h':'Medicine Ceremony','e.cer.p':'Full ceremonial holding with live music and field work. Integration before and after the ceremony.',
+  'e.cer.1':'Live music throughout the ceremony','e.cer.2':'Holding of the energetic space','e.cer.3':'Pre and post integration','e.cer.note':'per person',
+  'e.kambo.h':'Kambo','e.kambo.p':'Work with the medicine of kambo (Amazonian frog) with direct permission from the shamans of the Amazon where this medicine originally lives.',
+  'e.kambo.1':'Living lineage · not commercial certification','e.kambo.2':'Series of 3 sessions recommended','e.kambo.3':'Accompanied preparation and integration','e.kambo.note':'per person · per session',
+  'e.tem.h':'Temazcal','e.tem.p':'26 years facilitating the way of the temazcal. Ancestral ceremony of purification, prayer and rebirth.',
+  'e.tem.1':'Traditional four-doors facilitation','e.tem.2':'Opening, holding and closing of the temazcal','e.tem.3':'For private or open groups','e.tem.note':'minimum USD 1.000 per temazcal',
+  'e.eh.h':'Smoking Mirror / Tezcatlipoca','e.eh.p':'Flagship 7-day retreat based on Toltec cosmology — the 4 Geometries of the elements (Wind, Earth, Water, Fire), somatic work, sound, ceremony, opening and closing temazcal, cacao + sound journey, integration. Co-created with TOJI Retreat Center.',
+  'e.eh.1':'7 days · lodging + food + program','e.eh.2':'Toltec cosmology · 4 Geometries','e.eh.3':'Next edition: December 2026 · TOJI','e.eh.note':'per person · all-inclusive',
+  'e.geo.h':'Sacred Geometry Workshops','e.geo.p':'Standalone 3–4 hour workshops: one geometry (Wind, Earth, Water or Fire) + body practice + sound closing.',
+  'e.geo.1':'3–4 hours per workshop','e.geo.2':'One geometry at a time','e.geo.3':'Standalone or series of 4','e.geo.note':'depending on group size',
+  'cen.eyebrow':'b2b','cen.title':'For retreat centers',
+  'cen.lead':'I collaborate with retreat centers in Costa Rica and the region as facilitator, sound healer in residence, or co-creator of signature retreats.',
+  'cen.how.h':'Three ways to collaborate',
+  'cen.m1.h':'One-off events','cen.m1.p':'Sound journey, temazcal or ceremony added to the program already running at the center. I arrive with all the gear.',
+  'cen.m2.h':'Series · Partial residency','cen.m2.p':'Recurring facilitation monthly or quarterly. I build audience with the center and generate loyalty.',
+  'cen.m3.h':'Signature retreat co-creation','cen.m3.p':'Design and operation of the Smoking Mirror retreat or a custom program as the center\'s premium product. Revenue share model.',
+  'cen.bring.h':'Complete technical setup','cen.bring.p':'The center only provides the space. I bring everything else:',
+  'pkg.1':'Sound','pkg.1p':'Professional system scalable to group size.','pkg.2':'Lights','pkg.2p':'Ceremonial lighting design.','pkg.3':'Instruments','pkg.3p':'Synths, controllers, 20+ world instruments.','pkg.4':'Medicine','pkg.4p':'Materials for temazcal, kambo, ceremony. Direct lineage and permission.',
+  'cen.coll.h':'Collaborations','coll.more':'…and more','cen.cta.p':'Want to explore a collaboration?','cen.cta.b':'Let\'s talk',
+  'm.eyebrow':'media','m.title':'Music & Gallery','m.lead':'The sound is born from the river that was already flowing. Here are some pieces and moments.',
+  'm.sc.h':'SoundCloud','m.sc.p':'Selected tracks and recordings of ceremonies.','m.gal.h':'Gallery',
+  'c.eyebrow':'contact','c.title':'Let\'s talk','c.lead':'For retreat centers, organizations, events and individual work.',
+  'c.email':'Email','c.wa':'WhatsApp','c.wa.v':'+506 — to add','c.ig':'Instagram',
+  'c.form.h':'Write directly','c.f.name':'Name','c.f.email':'Email','c.f.role':'I am…','c.f.msg':'Message','c.f.send':'Send',
+  'up.label':'next public date','up.date':'December 2026','up.where':'Smoking Mirror Retreat · TOJI · Costa Rica',
+  'foot.tag':'by Camilo Poltronieri · Costa Rica · silentriver.earth'
+}};
+document.querySelectorAll('[data-i18n]').forEach(el=>{i18n.es[el.dataset.i18n]=el.innerHTML});
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(i18n[l][k]!==undefined)el.innerHTML=i18n[l][k];});
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  localStorage.setItem('lang',l);
+}
+document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+const saved=localStorage.getItem('lang');if(saved==='en')setLang('en');
+</script>
 
 </body>
 </html>
